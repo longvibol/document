@@ -1,0 +1,134 @@
+Functional Interface:
+
+1. Have only one Abstacb Method: SAM : signle Abstrab Method
+2. Example:
+
+@FunctionalInterface
+public interface Shape {
+	
+	double getArea();
+	
+	default void show() {
+		System.out.println("this new function!");
+	};
+
+}
+
+--------
++ @FunctionalInterface : to noted that this is functional interface 
++ double getArea(); : is the abstract method (no body) 
++ default void show() : is the default method not the abstract method it have body 
+
+
+
+-------------- 
+** Interface can not initiate object ** 
+
+========== java functional interface 
+
+Function<T,R) accepts one arguments and produces a result. 
+
+- Arguments : ពេលយើងបោះតម្លៃអោយ Body Function វាជា អគុយមិន
+
+Ex: without lambda
+
+Step to Consider:
+
+1. Want to convert from String to Integer 
+2. Functiona is the Functional interface in jave can give the Argument then return a result 
+3. First Crate Function name then implemnted from the Functional<T,R) : T input, R return
+4. call function to Main code need to put the function staic បានយើងអាចហៅវាយកមកប្រើបាន
+
+===> 
+
+package piseth.java.shool.functionaInterface;
+
+import java.util.function.Function;
+
+public class FunInterface {
+
+	public static void main(String[] args) {
+		
+		Function<String, Integer> getLenth = new ToLenthg();
+		int lenthStr = getLenth.apply("Vibo is a student");
+		System.out.println(lenthStr);
+
+	}
+	
+	static class ToLenthg implements Function<String, Integer>{
+
+		@Override
+		public Integer apply(String t) {
+			// TODO Auto-generated method stub
+			return t.length();
+		}
+		
+	}
+
+}
+
+
+---------------------------- Using Lambda 
+
+Ex:
+
+// =========== Impelment lambda 
+		
+		Function<String, Integer> getLenth2 = (String str) ->str.length();
+		System.out.println(getLenth2.apply("Vibol"));
+
+Ex1: no need to put Type 
+// ============= No need to put Type in Lambda (it call Inference Type) 
+		
+		Function<String, Integer> getLength3 = (name) -> name.length();
+		System.out.println(getLength3.apply("Dany"));
+
+Ex2: 
+// ============= No need to put Type in Lambda (it call Inference Type) 
+		
+		Function<String, Integer> getLength4 = name -> name.length();
+		System.out.println(getLength4.apply("Billy"));
+
+Ex3: get first Chara
+
+Function<String, Character> getFirstChar = first -> first.charAt(0);
+		System.out.println(getFirstChar.apply("Book"));
+
+-------------- BiFunction (input 2 types then return 1 result) 
+Ex:
+
+BiFunction<String, Double, Double> powerOfText1 = (text, power) -> Math.pow(text.length(), power);		
+		System.out.println(powerOfText1.apply("vibol", (double) 2));
+
+------------------- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

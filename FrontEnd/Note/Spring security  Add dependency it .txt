@@ -1,0 +1,164 @@
+Spring security : Add dependency it will put all the security all the api 
+
+==================== error 401 : authorization : mean need to put user name and password 
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+Therefor: in application.properties
+
+Customize our user and pass: 
+
+spring.security.user.name=vibol
+spring.security.user.password=123
+
+==================== 403 : Forbidden (when use post ) 
+
+need to disable : csrf 
+
+Why we need to have token on the header : becaue after we anable the security it will need to autherize in each component request to each component api. 
+
+Step to verify the security in each component 
+
+1. Test Request 
+2. Crate Token after test request is success 
+3. then take a Token to a Context 
+4. Finily : we will use a Token from context to all the component 
+
+
+
+There are two error : 
+1. Option request - We need to anable it to any body 
+2. Create Basic authentication at the time login to check : if the token is valit 
+
+--> we login from FE then we sent the basicAuth to check if the token is return 200 status then we can clear it is the right 
+username and password 
+
+
+================== importance in the FE
+1. how to create token when login 
+
+In AuthContext.js we confi the token 
+
+Ex: 
+
+
+export default function AuthProvider({ children}){
+
+    const [isAuthenticated, setAuthenticated] = useState(false)
+    const [username, setUsername] = useState(null)   
+
+    function login(username,password){ 
+
+        const baToken = 'Basic ' + window.btoa(username + ":" + password)
+	// form to create token from window : need to be the same as above 
+
+	// it is call promise 
+        executeBasicAuthenticationService(baToken)
+	// call the api to check if the status okay from BE then return status 200 
+
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+
+        setAuthenticated(false)
+
+    }
+
+
+
+2. how to use the token in all the component request 
+export const executeBasicAuthenticationService=
+    (token) => apiClient.get(`/basicauth`,{
+        headers: {
+            Authorization: token
+        }
+    })
+============================= *****************
+what is promis in React : it does not wait until it finish 
+
+executeBasicAuthenticationService(baToken)
+	// call the api to check if the status okay from BE then return status 200 
+
+        .then(response => console.log(response)) // . then is the promis when it get the reaspon it will executed 
+        .catch(error => console.log(error))
+
+        setAuthenticated(false)
+
+យើងអត់ចង់បាន Promise ចឹងទេ យើងចង់បានអោយវា ផ្ទៀងផ្ទាត់ហើយ ថា ត្រឹមត្រូវទើ់បអោយវា ផ្ទៀងផ្ទាត់លក្ខណ 
+ចឹងត្រូវប្តូរ Function នឹងទៅជា asyno and put Awit 
+
+
+const response = await executeBasicAuthenticationService(baToken)
+
+if the response it successfull then we can do another thing: why we need it becaue we can verify in advance for the token
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

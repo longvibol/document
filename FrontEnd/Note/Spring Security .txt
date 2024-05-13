@@ -1,0 +1,33 @@
+Spring Security 
+
+1. Why we need JWT (Json Web Token) 
+= open, industry standard for representing claims securely between two parties 
+
+2. what does a jwt contain
+- Header: 
+	. Type : JWT
+	. Hashing Algorithm:HS512
+- Payload
+	. Standard Attributes
+	- iss: The issuer
+	- sub: The subject
+	- ayd: The audience
+	- exp: when does token expire?
+	- iat: When was token issued? 
+	. Custom Attributes
+	- youatt1: Your custom attribute 1
+- Signature
+	. Includes a Secret 
+
+
+==================
+
+
+eyJraWQiOiJkMTA1ZDRlMS1jY2NiLTQ0MzMtODNkNC1mNTIxYzU3ZGRkOGYiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidmlib2wiLCJleHAiOjE3MDY4NjcxMjUsImlhdCI6MTcwNjg2MTcyNSwic2NvcGUiOiJST0xFX1VTRVIifQ.CaTkth39nEnTn_X-Q203gmQ2tCix41EmVTw-IGGCA8-ONY7qzLK1pKua5JWQm-ln0YYpw1NkXPPVib9AvV5bXy-DqrWQIyVRQUanjqv0nXypbGhCdWASxli84zWZM7MdxfrbVW6PBgDlm5hyCzLQhM0HFECf9pDjM-JdMwiaMl6Ias3k039YFPfPMkLOg1xjSQOdhXCkK7WC--ls8p5iASIxioyPK4cNOjmMZzNOg0zDUI7Z0dptYaIGIrXc4bfVlwEXDv0AhF5htlJzmEljAoG_dvnMkHenBQAnJq89xbsCAuCahnVdNiThMUxJLhoxui7sQld1q_W6KBjJT_dFSw
+
+
+
+
+
+
+=========================

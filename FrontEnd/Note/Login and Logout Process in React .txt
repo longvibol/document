@@ -1,0 +1,20 @@
+*** Login and Logout Process in React : Need to have crate context first 
+
+1. Need to think which component need to be protect
+2. Crate AuthenticateRoute : it mean we crate where the AuthenticateRoute cover the component: 
+Ex: 
+
+function AuthtenticatedRoute({children}){
+        const authContext = useAuth()
+        if (authContext.isAuthenticated)
+            return children
+        return <Navigate to="/" />
+    }
+------------------------ return JSX : 
+<Route path="/welcom/:username" element={
+                        <AuthtenticatedRoute>
+                            <WelcomComponent/>                            
+                        </AuthtenticatedRoute>                            
+                        }/>
+
+-------------------------------------- 

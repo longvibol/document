@@ -1,0 +1,7 @@
+Bootstrape Install 
+
+1. npm install bootstrape 
+2. import 'bootstrap/dist/css/bootstrap.min.css';
+
+<div className="container"> : where is the main page 
+<table className="table"> : table style

@@ -1,0 +1,138 @@
+* State : Built-in React object used to contain data or information about the component. 
+* useState return two things : current state and a function to update state 
+* Each instance of component has it's own state 
+
+
+Ex: const state = useState(1);
+
+    function incrementCounterFunction(){
+        console.log(state[0])
+        console.log(state[1])
+        console.log('increment clicked')
+    }
+
+its return : 
+Array element : one is storage and function to update state of the component 
+
+- deconstracting from Array to element
+
+Ex: 
+const array = [1,2]
+const [f,s] = array
+គេហៅថា deconstraction from element array 
+console.log(f) ==> 1
+console.log(s) ==> 2
+
+ពេលយើងចង់ Upsate state យើងហៅ function and adding to the current state 
+
+Ex const [count, setCount] = useState(0)
+function incresement(){
+
+	//SetCount is the functon call to update state 
+	//count is the current state store 
+
+	setCount(count + 1)
+}
+
+
+1. HTML element DOM (doucment object Model) to view in brower 
+2. But React its call Virtual DOM !
+Becaue DOM in html is very difficult to update that why React create Virtual DOM. 
+
+* Step in behind: 
+
+1. React create Virtual DOM v1 on load of page
+2. You perform an action 
+	3. React create Virtual DOM v2 as a result of your action 
+	4. React performs a diff between v1 and v2
+	5. React synchronizes changes (then it update the HTML page) 
+
+========================== Props ===== 
+
+* In component we can add properties
+==> we use for things that remain a constant during lifetime of a component 
+
+1. <Counter by = {1}/> in App.js we call and set props 
+2. export default function Counter({by})
+{
+return(
+	<div></div>
+)
+} 
+
+- we put by in {} becaue it is property:
+
+export default function Counter({by}){
+
+    const [count, setCount] = useState(0)
+
+    function incrementCounterFunction(){
+        setCount(count + by)
+    }
+
+* Constrance of all property : 
+
+import {PropTypes} from 'prop-types'
+
+Counter.propTypesropTypes = {
+    by : PropTypes.number
+}
+
+****
+Counter.defaultProps = {
+    by : 1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

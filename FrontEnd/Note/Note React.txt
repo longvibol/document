@@ -1,0 +1,184 @@
+**** Condition in React:
+
+Use when we want to check username and password verification
+
+* Ture && 'Vibol'
+==> Vibol
+
+* fasle && 'Vibol'
+==> fasle
+
+Ex: 
+
+{showSuccessMessage && <div className="successMessage">Authentication Successfully</div>}
+
+=====================  react-router-dom : crate path and navigation: 
+
+import { BrowserRouter,Routes,Route,useNavigate } from "react-router-dom" 
+
+
+return(
+        <div className="TodoApp">
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<LoginComponent/>}></Route> // default page
+                    <Route path='/login' element={<LoginComponent/>}></Route>
+                    <Route path='/welcome' element={<WelcomComponent/>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </div>
+    )
+
+----------------- naviate to another component (to another page url)
+* const navigate = useNavigate() 
+* navigate('/welcome')
+
+
+============== useParam in react-router-dom
+
+<Route path="/welcom/:username" element={<WelcomComponent/>}/>
+*  :username is the parameter (variable)
+ដើម្បីពេលបង្ហាញលើ URL វាចេញ ឈ្មោះនៅខាងចុង
+
+*  navigation(`/welcom/${username}`) 
+1. navigation('/welcom/vibol') this is JS basic java code 
+We want to turn it to variable 
+
+***** ==> navigation(`/welcom/${username}`) 
+
+- $ is remack the varibale in JS 
+- ` is accepte the javaScrip code 
+- {} is the value to decare 
+
+========= JS Array property :
+
+* Array forEach Method: what we want to do in each element in the Array (Convert)
+Ex: todos.forEach(element => console.log(elment))
+==> 
+todos.forEach(elm => console.log(elm))
+
+VM724:1 {id: 1, description: 'Learn AWS'}description: "Learn AWS"id: 1[[Prototype]]: Object
+VM724:1 {id: 2, description: 'Learn Full Stack Dev'}description: "Learn Full Stack Dev"id: 2[[Prototype]]: Object
+VM724:1 {id: 3, description: 'Learn DevOps'}
+
+* Array map Method : to Map elment in array to do Something else (យកទិន្នន័យចេញពីធាតុ)
+Ex: 
+todos.map(e=>e.id)
+(3) [1, 2, 3]
+
+
+=========== in React to render table to web we use : map
+
+
+function ListTodosComponent(){
+
+    const today = new Date()
+    const targetDate = new Date(today.getFullYear()+ 12, today.getMonth(), today.getDay())
+
+    const todos = [
+                    {id: 1, description: 'Learn AWS', done: false, targetDate:targetDate},
+                    {id: 2, description: 'Learn Full Stack Dev', done: false, targetDate:targetDate},
+                    {id: 3, description: 'Learn DevOps', done: false, targetDate:targetDate},
+                    {id: 4, description: 'Learn Java', done: false, targetDate:targetDate}       
+            
+                ]
+
+    return(          
+
+        <div className="ListTodosComponent">
+            <h1>Thing You Want To Do!</h1>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Description</td>
+                            <td>Is Done?</td>
+                            <td>TargetDate</td>
+                        </tr>
+                     
+                    </thead>
+                    <tbody>
+                        {todos.map(
+                            todo => <tr key={todo.id}>
+
+                                        <td>{todo.id}</td>
+                                        <td>{todo.description}</td>
+                                        <td>{todo.done.toString()}</td>
+                                        <td>{todo.targetDate.toDateString()}</td>
+                                    </tr>
+                        
+                        )}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    )
+}
+
+** ============== Link (react take only the link need) vs a (html: is refres all entire page ) 
+
+return(
+        <div>
+            
+            <div className="WelcomComponent">
+            <h1>Welcom {username}</h1>
+                <div>
+
+
+                    Manage your Todos - <Link to="/todos">Go Here ! </Link>
+                    {/* Manage your Todos - <a href="/todos">Go Here ! </a> */}
+                    {/* when we use <a href > entire page are refress  */}
+                </div> 
+            </div>
+        </div>
+        
+    )
+
+
+============== 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

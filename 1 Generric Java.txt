@@ -1,0 +1,404 @@
+Generric Java
+
+- crate in java v 5
++ sytax <> 
++ មានន័យថាត្រូវបញ្ជាក់ ធាតុជាមុន​សិន​ ដើម្បីពេលមានបញ្ហាវានឹងបង្ហាញនៅពេល 
+
+==> Ex: 
+
+1. List list = new ArrayList(); (old version without Generic type
+2. List<String> list = new ArrayList<String>(); 
+
+** After JAVA 7 
+
+Ex : 
+1. List<String> list = new ArrayList<String>(); 
+2. List<String> list = new ArrayList<>();
+
+
+*** Generic Class : EX:  public class GenericsType<T> 
+
+//call class parameter right 
+// ពេលបង្កើត class យើងកំណត់ ប្រភេទវាអោយហើយ
+// Two worning : GenericsType (*defaul it will be an object)
+
+EX: 
+public static void main(String[] args) {
+		GenericsType<String> type =  new GenericsType<String>();
+		type.setValue("VIBOL");
+ 	
+		String str = type.getValue();
+		System.out.println(str);
+
+
+================ 
+
+Class Generic with Two Parameterize: 
+
+Ex: 
+
+public class ClassGenericDemo {
+	Map<String, Integer> map = new HashMap<String, Integer>();
+	Comparator<Integer> compare = new Comparator<Integer>() {
+
+		@Override
+		public int compare(Integer o1, Integer o2) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	};
+
+}
+
+
+
+============================
+
+** Interface Generi:
+
+Ex: package com.piseth.javaschool;
+
+public interface InterfaceGeneric<T> {
+
+}
+
+=============================== 
+
+** Generic Type : note letter in generic 
+
+E = Element
+K = Key(Used in Map)
+N = Number
+T = Type
+V = Value (Used in Map)
+S,U,V etc. = 2nd, 3rd, 4 th types 
+
+
+=================================
+
+** Generic Method ( យើងអត់បង្កើតខ្លះនឹងជា Generic te but we want to use the method inside the calls to have genercia type) 
+
+Ex: create class: GenericsType<T> 
+
+public class GenericsType<T> {
+	//call class parameter right 
+	// ពេលបង្កើត class យើងកំណត់ ប្រភេទវាអោយហើយ
+
+	private T value;
+
+	public T getValue() {
+		return value;
+	}
+
+	public void setValue(T value) {
+		this.value = value;
+	} 
+
+-------------------
+
+In Genercia Method Calss called GenericsType<T> to used. 
+
+// Compare with type we specifie in advacne : 
+
+public static <T> boolean isEqual(GenericsType<T> t1, GenericsType<T> t2) {
+		return t1.getValue().equals(t2.getValue());
+}
+
+
+==> 
+
+//		GenericsType<Integer> t1 = new GenericsType<>();
+//		GenericsType<Integer> t2 = new GenericsType<>();
+//		
+//		t1.setValue(5);
+//		t2.setValue(10);
+//		
+//		boolean equal = GenericMethod.isEqual(t1, t2);		
+//		// type infarent 
+//		// boolean equal = GenericMethod.<Integer>isEqual(t1, t2);
+//		
+//		
+//		System.out.println(equal);
+
+
+--------------- Compare two type of input 
+
+public static <T> List<T> combine(List<T> list1, List<T> list2){
+		
+		List<T> result = new ArrayList<>();
+		result.addAll(list1);
+		result.addAll(list2);	
+		
+		return result;
+	}
+
+// public static : static mean we can call the same class
+
+============================= Generics Bounded Type Pagaremer ដាក់ដែនកំណត់ទៅលើប្រភេទ type​ របស់យើង
+
+public static <T extends Number> double sum(List<T> numbers) {
+
+// Number is the Border of the Type T; beside the Number can not use this function! 
+
+		double total = 0;
+		for (T num : numbers) {
+			total+=num.doubleValue();
+		}
+		return total;
+}
+
+--------------------------- GenericsInheritance 
+- គ្រប់ Class ទាំងអស់សុទ្ធតែជាកូនចៅរបស់ ខ្លះ Object 
+
+public static void main(String[] args) {
+
+		String str = "Vibol";
+
+		@SuppressWarnings("unused")
+		Object obj = new Object();
+		// assin obj getvalue from str;
+		obj = str;
+
+		// ========================= Intheritance from the Genericae can not do it!
+
+		@SuppressWarnings("unused")
+
+		Vibol<String> strG = new Vibol<String>();
+		Vibol<Object> objG = new Vibol<Object>();
+
+		// Type mismatch: cannot convert from GenericsInheritance.Vibol<String> to
+		// GenericsInheritance.Vibol<Object>
+		// objG = strG;  X
+
+		obj = objG;
+
+
+	}
+
+	static class Vibol<T> {
+
+		public void toString(String string) {
+			// TODO Auto-generated method stub
+
+		}
+	}
+
+}
+
+Generic Type<A> can not Assin to Generic Type<B> បានទេព្រោះវាមិនទាក់ទងគ្នា
+
+==> គេធ្វើ Extend clause for assing from one Generic to another 
+
+Ex: static class Heng<T> extends Vibol<T>{}
+
+------------------------------------- GenericsWildcard (?) inside the class
+
+public static void display(List<?> list) {
+		for(int i = 0;i <list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+	}
+
+- In Generica Wildcard we can do : parameter, field, local variable and return type
+
+Ex_parameter: public static void display(List<?> list) {}
+Ex_return type: public List<?> getList() {
+		return null;}
+
+
+- Can not do : invoking (call) a generic method, instantiating a generic class 
+List<?> list1 = new ArrayList<>();
+
+//list1.addAll("");  can not add becaue ? default is Object Type can not add to another 
+
+Ex: 
+
+List<Integer> list2 = new ArrayList<Integer>();
+		list2.add(2);
+
+==> list1 =  list2; Can Add 
+
+** can not instantiating
+
+Ex: 
+Vibol<String> v = new Vibol<String>();
+// Vibol<?> v2 = new Vibol<?>(); can add ? to the Generice wilcard 
+
+
+
+------------------------------------- Generic Unbounded Wildcard (នៅក្រោមវាប្រើបានទាំងអស់)​
+
+public class UpperBoundeWildcard {
+
+	public static void main(String[] args) {
+		List<Integer> numbers = List.of(1,2,3,4,5);
+		double total = sum(numbers);
+		System.out.println(total);
+		
+		// បើយើងកំនត់វាជា Interger in the List<Number> numbers = List.of(1,2,3,4,5); 
+		// it will error on the Interger type becaue we create the function type is Number 
+		// Number is the biggest Type and Interget. Long etc are under Number; So we can exted the ? to the number
+		
+	}
+	
+	public static double sum(List<? extends Number> numbers) {
+		double total = 0;
+		for (Number num : numbers) {
+			total+=num.doubleValue();
+		}
+		return total;
+	}
+	
+	
+	// we create Generic infront the function name 
+	public static <T extends Number> double sum1(List<T> numbers) {
+		double total = 0;
+		for (T num : numbers) {
+			total+=num.doubleValue();
+		}
+		return total;
+	}
+	
+}
+
+អនុវត្តបានសម្រាប់ខ្លួនឯង និងកូនចៅ​​  
+
+===================== *** LowerBoundWildcard ? super ... (ទាល់ក្រោម)
+
+public class LoverBoundWildcard {
+
+	public static void main(String[] args) {
+
+		List<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		
+		//ImmutableCollections
+		addInteger(List.of(1));
+		
+		// Type: Long can not becaue 
+		// The method addInteger(List<? super Integer>) 
+		// in the type LoverBoundWildcard is not applicable for the arguments (List<Long>)
+		// is not applicable for the arguments = មិនអាចអនុវត្តិបាន
+		
+		// Long មានលទ្វិភាពផ្ទុបនូវ លេខបានច្រើនជាងមិនមែន
+		
+		// Number (father); Integer(chilren) but Long( is cibling) or other people 
+		
+		// List.of(1,2,3) vs ArrayList<>();
+		// List.of =  immuate = can not change element 
+		// ArrayList<>() can add new element 
+		
+
+	}
+
+	public static void addInteger(List<? super Integer> numbers) {		
+		//numbers.add(5);
+	}
+
+}
+
+
+================================  ចង់អោយ Function អាចប្រើបានគ្រប់ object ទាំងអស់​(No limite)
+
+public class UnboundeWildcard {
+
+	public static void main(String[] args) {
+
+		List<String> string = List.of("Dara", "Thida");
+		printData(string);
+
+		List<Integer> ints = List.of(1, 2, 3, 4);
+		printData(ints);
+
+		// Type: Object and String are differnt Type
+		printObject(string);
+		// The method printObject(List<Object>) in the type UnboundeWildcard is not
+		// applicable for the arguments (List<String>)
+
+	}
+
+	public static void printData(List<?> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+	}
+
+	public static void printObject(List<? extends Object> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+	}
+
+}
+
+
+================================ Subtyping using Generics wildcard ? 
+
+public class GenericsSubType {
+
+	public static void main(String[] args) {
+		List<Integer> list1 = new ArrayList<>();
+		
+		List<? extends Number> list = list1;
+		// list list1 is under list (Ingeger < Number ) 
+		
+		List<String> str = new ArrayList<String>();
+		
+		// list = str; not related (String and Number)
+		//Type mismatch: cannot convert from List<String> to List<? extends Number>
+
+	}
+
+================== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

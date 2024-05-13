@@ -1,0 +1,24 @@
+Login form step to do : 
+
+1. Crate form 
+2. Synchon state with React state in DOM 
+Need to set:
+-set: default: value
+-Set : onChange event by setState 
+
+Ex:  
+<div>
+    <label>User Name: </label>
+    <input type="text" name="username" value={username} onChange={handleUsernameChange}/>
+</div>
+
+--------------- 
+1. const [username, setUsername]=useState("vibol")
+
+2. function handleUsernameChange(event){
+        // console.log(event.target.value)
+        setUsername(event.target.value)
+}
+
+
+=================================

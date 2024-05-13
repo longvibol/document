@@ -1,0 +1,143 @@
+Git Commanh 
+
+1. git config username and password 
+2. git status : check status 
+3. git init : make the folder to repository 
+4. git add index.html : add fill to stage area 
+5. git log : check history 
+6. git commit -m "message" : add file to commit history 
+7. git restore --staged hello.java.txt : ដក់ file ចេញពី stage វិញ
+8. git commit --amend -m "edit message add all file"  : Edit message in commit 
+10. git add -A : add all the file include sub folder 
+11. git add . : add current folder 
+
+12. git diff : check what we have change 
+
+13. git config --get remote.origin.url : check setup remote repository (git hub )
+
+
+
+==========================
+
+How to add folder to git hub
+
+1. copy repository and command from git hub 
+- git remote add origin https://github.com/longvibol/learninggit.git
+
+2. git branch : check branch ( in local * master is the default branch) but in Git Hub ( Main) 
+
+If we can not log in : go to control panel -> Credential Manager -> remove old github. 
+
+3. git push -u origin main
+
+4. git branch -M main
+
+5. git commit -m "message" 
+
+Remember this step it update on the local repository only: to make it to server github need: git push
+
+6. git push ( push all to github)  : to code to git hub 
+
+7. git pull : បើមានក្រុមការងារគេធ្វើការដែរតម្រូវយើងចង់បានកូដគេមកប្រើវិញ
+
+---------------------- Another Team 
+
+1. git clone https://github.com/longvibol/learninggit.git (copy code from git hub) 
+2. git branch : check branch where we are now 
+3. git branch add-security (create add-security)
+4. git checkout add-security (switch to branch name to add-security)
+5. git checkout -b style (crate new branch then checkout to new branch name: style) 
+6. git branch -d add-security (delete branch) 
+7. git merge style (merge from another branch) 
+
+
+
+
+Ex: ==========
+
+
+diff --git a/hello.java.txt b/hello.java.txt
+index e69de29..1fc2c66 100644
+--- a/hello.java.txt
++++ b/hello.java.txt
+@@ -0,0 +1 @@
++java code
+\ No newline at end of file
+diff --git a/index.html.txt b/index.html.txt
+index e69de29..6c70bcf 100644
+--- a/index.html.txt
++++ b/index.html.txt
+@@ -0,0 +1 @@
++<html></html>
+\ No newline at end of file
+
+
+------------------------ after edit :
+
+diff --git a/hello.java.txt b/hello.java.txt
+index e69de29..6745513 100644
+--- a/hello.java.txt
++++ b/hello.java.txt
+@@ -0,0 +1 @@
++java code and add new edit inside
+\ No newline at end of file
+diff --git a/index.html.txt b/index.html.txt
+index e69de29..3451e1c 100644
+--- a/index.html.txt
++++ b/index.html.txt
+@@ -0,0 +1,6 @@
++<html>
++
++<h1>
++<h1>
++
++</html>
+\ No newline at end of file
+
+
+យើងមើលសញ្ញា បូក + គឺកន្លែងដែលយើងបានបន្ថែម
+
+------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

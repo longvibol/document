@@ -1,0 +1,156 @@
+- npx create-react-app todo-app : creact project name "todo-app"
+- npm start : start the app in development mode 
+- npm init : install package in our app 
+- npm test : test mode 
+- npm run build : to build a production deployable unite 
+* npm install : install dependency to package js
+
+================= short cut in VS code 
+1. Ctrl + B = Explore 
+2. Ctrl + P = Search box
+
+=================== JS Over View 
+
+1. index.html : in side <body> have <div id = "root"></div> it is react running 
+2. index.js : runing in the folder src/index.js (have function App() it called Component 
+in the js file many component are running. 
+3. App.js the last file that contain : className="App" 
+
+
+========== Why do we need React Components?
+Web applications have complex structure so to separate components for each page element
+==> Modularization and can Reuse code 
+
+*** Component in React have many kind 
+We create compoent by put the App component is the header for the child component :
+Component can be as below: 
+- View (JSX or JavaScript) ដើម្បីបង្ហាញ
+- Logic (JavaScript) file is .js
+- Styling (CSS)
+- State (Internal Data Store for the components) រក្សាទុកទិន្នន័យ component ក្នុងម៉ាស៊ីន
+- Props (Pass Data betweek component and component) ផ្លាស់ប្តូរទិន្នន័យ component and component 
+
+Name of the component must be : Capital letter ex: function FirstComponent(){}
+
+- Function Component : becaue we use function to create component that why it call function component!
+Ex: function FirstComponent(){
+  return (
+    <div className='FirstComponent'>First Component</div>
+  )
+}
+
+===> call : <FirstComponent></FirstComponent>
+
+- Class Component: 
+Ex: class ThirdComponent extends Component{
+  render(){
+    return(
+      <div className='ThirdComponent'>Third Component</div>
+    )
+  }
+}
+
+===> call : <ThirdComponent/>
+
+* each java file presentation .js is call modul 
+Noted: in prevouse version of React below 16.8 only Class Component can crate State.
+Start is the Buil-in React object used to contain data or information about the component. 
+
+That why they crate "Hooks" after React 16.8 Version
+- it is very easy to use for hooks 
+- useState hook allows adding state to Function Component 
+
+from now on the will use Function Component in React!!!
+
+================ why we use ()
+
+- React project use JSX for presentation ( Java Scrip xml) 
+- JSX file is Stricter than HTML
+EX: <div className='FirstComponent'>First Component</div>
+is the JSX syntax 
++ JSX can return only one file <div><div/> or <></> (empty wrapper)
++ Old brower can not read js file that why they create Babel to compatibility
+- ES2015,ES2022....
+
+* មានន័យថា Babel វាជាអ្នកបកប្រែទៅ JSX កូដ JS cod សម្រាប់ Broswer ចាស់ៗ
+
+Note: JSX (React use JSX code)
+- Parenthese () need; JSC need upper case letter in the Component (function FirstComponent) 
+- HTML tag is small case
+- callName use for JSX
+
+
+
+================= import component 
+****
+- import {FithComponent} from "./components ពេលដាក់ {} គឺយើងចង់អ្វីដែលមិនមែនជា defaul component 
+
+We have two kind of import ; defalu import and Name import component 
+
+=============== create object in JS
+
+Ex: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+ 
+
+
+
+

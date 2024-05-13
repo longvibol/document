@@ -1,0 +1,185 @@
+** Form and date in React
+
+1. install dependency 
+- npm install formik : to crate the form 
+- npm install moment : to update the date 
+
+2. Form example : 
+
+return(
+        <div className="container">
+            <h1>Enter Todo Details</h1>
+        <div>
+            <Formik initialValues={{description, targetDate}}
+                enableReinitialize={true}
+                
+                // mapping to submit function 
+                onSubmit={onSubmit}
+            >
+                {
+                    (props) =>(
+                        <Form>
+                            <fieldset className="form-group">
+                                <label>Description</label>
+                                <Field type="text" className="form-control" name="description"/>
+                            </fieldset>
+
+                            <fieldset className="form-group">
+                                <label>Target Date</label>
+                                <Field type="date" className="form-control" name="targetDate"/>
+                            </fieldset>
+                            <div>
+                                <button className="btn btn-success m-5" type="submit">Save</button>
+                            </div>
+                        </Form>
+                    )
+                }
+
+            </Formik>
+        </div>
+    
+
+        </div>
+    )
+
+
+Noted each iteam: 
+
+- initialValues={{description, targetDate}} : when form up it will retrive the date from description and targetData
+- enableReinitialize={true} : configer anable form when start 
+- onSubmit={onSubmit} : Mapping to the function where we want to sumbit the field 
+
+
+============================== validate
+
+1. Set validation on the message display :
+
+function validate(values){
+
+	// let is the  notation to crate emplty object:
+        let errors ={
+            // description: 'Enter a valid description',
+            // targetDate: 'Enter a valid target date'           
+        }
+
+        if(values.description.length<5){
+            errors.description = 'Enter at least 5 characters'
+        }
+
+        if(values.targetDate == null){
+            errors.targetDate = 'Enter a target date again!'
+        }
+
+        console.log(values)
+        return errors
+    }
+
+------------------- jsx : 
+
+<Formik initialValues={{description, targetDate}}
+                enableReinitialize={true}
+                
+                // mapping to submit function 
+                onSubmit={onSubmit} // on Submit use to call the functoin submit 
+                validate={validate} // validate function created : where we put the condition validate 
+                validateOnChange = {false} // ពេលកែនៅលើ form កុំអោយវា Validate 
+                validateOnBlur = {false} // អោយវាធ្វើពេលដែល submit button save 
+            >
+
+
+------------------ inside the return 
+
+		(props) =>(
+                        <Form>
+			//where we map the ErrorMessage to the field form: Ex: 
+                            <ErrorMessage 
+                                name="description"
+                                component="div"
+                                className="alert alert-warning"
+                            />
+
+                            <ErrorMessage 
+                                name="targetDate"
+                                component="div"
+                                className="alert alert-warning"
+                            />
+==> fieldset where we mapping 
+
+<fieldset className="form-group">
+                                <label>Description</label>
+                                <Field type="text" className="form-control" name="description"/>
+                            </fieldset>
+
+
+============================= Update to BackEnd
+
+1. crate put API 
+Ex: 
+export const updateTodoApi 
+    = (username, id, todo) => apiClient.put(`/users/${username}/todos/${id}`, todo)
+
+- todo : is the request body and it is the object need to be creat
+
+2. function : submit 
+
+    function onSubmit(values){
+        console.log(values)
+
+        // create Send request Body : need to be the same at BE object 
+        const todo = {
+            id:id,
+            username: username,
+            description: values.description, // values is the date we want to put from Form 
+            targetDate: values.targetDate,
+            done: false
+        }
+        console.log(todo)
+
+        updateTodoApi(username,id,todo)
+        .then(
+            response => {
+                navigate('/todos')
+            }
+        )    
+        .catch(error => console.log(error)) 
+    }
+
+------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

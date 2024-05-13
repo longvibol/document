@@ -1,0 +1,89 @@
+** Update on React : 
+Concept to think 
+
+1. Crate new component to handle the update page:  
+2. Crate API to retrive the date from BE 
+3. Redirect to the new component paye and in side we call the API 
+4. Put the ComponentRouter 
+
+
+======================== 1 and 3
+import { useParams } from "react-router-dom"
+import { retrieveTodoApi } from "./api/TodoApiService"
+import { useAuth } from "./Secutiry/AuthContext"
+import { useEffect, useState } from "react"
+
+
+export default function TodoComponent(){
+
+    const {id}= useParams() // to use the variable in the URL / vibol/1
+    const AuthContext= useAuth()
+    const username = AuthContext.username
+
+    const [description, setDecription]=useState('')
+
+    function retrieveTodos(){
+        retrieveTodoApi(username,id)
+        .then(response =>{
+            setDecription(response.data.description)
+        })
+        .catch(error => console.log(error))
+    }
+
+    // we want to call retrievedTdo when it log the page 
+
+    useEffect(
+        ()=>retrieveTodos(),[id]
+        // when id was change it will refress 
+    )
+
+
+    return(
+        <div className="container">
+            <h1>Enter Todo Details </h1>
+        <div>
+            description:{description}
+        </div>
+    
+
+        </div>
+    )
+}
+
+=============================== 2:
+// We want to get Todo from username and id selected: 
+export const retrieveTodoApi 
+    = (username, id) => apiClient.get(`/users/${username}/todo/${id}`)
+
+
+================================= 4: in main Route 
+
+<Route path="/todo/:id" element={
+                        <AuthtenticatedRoute>
+                            <TodoComponent/>
+                        </AuthtenticatedRoute>                  
+                        }/>
+
+===============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
